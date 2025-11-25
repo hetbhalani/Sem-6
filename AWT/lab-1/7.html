@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .username {
+        color: red;
+      }
+      .password {
+        color: blue;
+      }
+      .btn {
+        color: orange;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <span>Tamaru naam:</span>
+    <input type="text" class="username" name="username"/>
+    <br /><br />
+    <span>Tamaro Password:</span>
+    <input type="text" class="password" name="password"/>
+    <br /><br />
+    <button
+        type="button"
+        class="btn"
+        onclick="foo()"
+    >DABO</button>
+  </body>
+  <script>
+      
+      function foo(){
+        let name = document.getElementsByClassName("username")[0].value
+        let password = document.getElementsByClassName("password")
+        console.log(name)
+        console.log(password)
+    }
+  </script>
+</html>

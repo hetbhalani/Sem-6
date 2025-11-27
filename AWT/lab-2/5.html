@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="yes" style="border: 2px solid black; height: 50px;">
+        AA DIV 6
+    </div>
+    <button id="btn">DABO</button>
+
+</body>
+<script>
+    const div = document.getElementById("yes")
+    // div.addEventListener('keydown', (div)=>{
+    //     console.log(input.key)
+    // })
+
+    const input = document.getElementById("btn")
+    input.addEventListener('click', (input)=>{
+        div.style.height = "100px";
+    })
+</script>
+</html>

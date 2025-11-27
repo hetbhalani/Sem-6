@@ -1,0 +1,33 @@
+<!-- which form event is fired -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="frm" action="#">
+        <input type="text" id="inp1" />
+        <input type="text" id="inp2" />
+        <button id="btn" type="button">DABO</button>
+    </form>
+</body>
+<script>
+    const btn = document.getElementById("btn")
+    
+    btn.addEventListener('click', (btn)=>{
+        const inp1 = document.getElementById("inp1").value
+        const inp2 = document.getElementById("inp2").value
+        
+        check(inp1) ? console.log("1_VALID") : console.log("1_NOT VALID")
+        check(inp2) ? console.log("2_VALID") : console.log("2_NOT VALID")
+    })
+    
+    const check = function(inp){
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return regex.test(inp)
+    }
+</script>
+</html>

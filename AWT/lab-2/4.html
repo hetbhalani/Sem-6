@@ -1,0 +1,35 @@
+<!-- which form event is fired -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="btn">DABO</button> -->
+    <form id="frm" action="#">
+        <input type="text" id="inp1" />
+        <input type="text" id="inp2" />
+        <button id="btn" type="button">DABO</button>
+    </form>
+</body>
+<script>
+    const inp1 = document.getElementById("inp1")
+    const inp2 = document.getElementById("inp2")
+    const btn = document.getElementById("btn")
+
+    inp1.addEventListener('focus', (inp1)=>{
+        console.log("focus changes from inp1")
+    })
+
+    inp2.addEventListener('focus', (inp2)=>{
+        console.log("focus changes from inp2")
+    })
+
+    btn.addEventListener('click', (btn)=>{
+        console.log("DABAIVUUU")
+    })
+</script>
+</html>

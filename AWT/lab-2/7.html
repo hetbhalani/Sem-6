@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Names</title>
+</head>
+<body>
+
+    <h2>CRUD App</h2>
+    <input type="text" id="nameInput" placeholder="Enter name">
+    <button onclick="addName()">Add</button>
+
+    <h3>List of Names</h3>
+    <ul id="nameList"></ul>
+
+    <script>
+        let names = [];  
+        let editIndex = 0; 
+
+        function addName() {
+            const input = document.getElementById("nameInput");
+            const value = input.value;
+
+            if (value === "") return alert("Please enter a name!");
+
+            else{
+                names.push(value)
+                editIndex++;
+            }
+
+            input.value = "";
+            showNames();
+        }
+
+        function showNames() {
+            const list = document.getElementById("nameList");
+            list.innerHTML = "";
+
+            names.forEach((name, index) => {
+                list.innerHTML += `
+                    <li>
+                        ${name}
+                        <button onclick="editName(${index})">Edit</button>
+                        <button onclick="deleteName(${index})">Delete</button>
+                    </li>
+                `;
+            });
+        }
+
+        function editName(index) {
+            document.getElementById("nameInput").value = names[index];
+            editIndex = index;
+        }
+
+        function deleteName(index) {
+            names.splice(index, 1);
+            showNames();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roll Numbers - Checkboxes</title>
+  <style>
+    body{font-family:Segoe UI, Arial; padding:16px}
+    .list{display:flex; gap:8px; flex-wrap:wrap}
+    label{display:flex; align-items:center; gap:6px}
+    #selected{font-weight:600}
+  </style>
+</head>
+<body>
+  <h3>Select roll numbers</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roll Numbers - Checkboxes</title>
+  <style>
+    body{font-family:Segoe UI, Arial; padding:16px}
+    .list{display:flex; gap:8px; flex-wrap:wrap}
+    label{display:flex; align-items:center; gap:6px}
+    #selected{font-weight:600}
+  </style>
+</head>
+<body>
+  <h3>Select roll numbers</h3>
+
+  <div id="list" class="list">
+    <label><input type="checkbox" value="101" class="roll">101</label>
+    <label><input type="checkbox" value="102" class="roll">102</label>
+    <label><input type="checkbox" value="103" class="roll">103</label>
+    <label><input type="checkbox" value="104" class="roll">104</label>
+    <label><input type="checkbox" value="105" class="roll">105</label>
+    <label><input type="checkbox" value="106" class="roll">106</label>
+  </div>
+
+  <p>Selected: <span id="selected">(none)</span></p>
+
+  <script>
+    // Cached elements
+    const list = document.getElementById('list');
+    const output = document.getElementById('selected');
+
+    // Update display to show currently checked values as comma separated list
+    function updateSelected() {
+      const checked = Array.from(document.querySelectorAll('.roll:checked'))
+        .map(cb => cb.value);
+
+      output.textContent = checked.length ? checked.join(', ') : '(none)';
+    }
+
+    // Use event delegation: listen for changes inside the container
+    list.addEventListener('change', updateSelected);
+
+    // Initialize display in case some checkboxes are pre-checked
+    updateSelected();
+  </script>
+</body>
+</html>

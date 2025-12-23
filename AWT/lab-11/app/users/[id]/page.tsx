@@ -1,10 +1,19 @@
 import React from 'react'
 import {db} from '@/lib/db'
+import { prisma } from '@/lib/prisma'
+import { users } from '@prisma/client';
+
 
 async function UserById({params} : {params: Promise<{id : String}>}) {
     const {id} = await params;
-    const data = await db.query(`SELECT * FROM users WHERE id = ${id}`)
-    const res = data.rows
+    // const data = await db.query(`SELECT * FROM users WHERE id = ${id}`)
+    // const res = data.rows
+
+    const res = await prisma.users.findMany({
+        where: {
+            id: Number(id)
+        }
+    })
   return (
     <>
         <div>UserById</div>
@@ -17,7 +26,7 @@ async function UserById({params} : {params: Promise<{id : String}>}) {
                 <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>pin</th>
             </thead>
             <tbody>
-                {res.map((user : any)=>(
+                {res?.map((user : users)=>(
                     <tr key={user.id}>
                         <td className='p-4 border-b border-blue-gray-50'>{user.id}</td>
                         <td className='p-4 border-b border-blue-gray-50'>{user.name}</td>

@@ -1,10 +1,15 @@
 import React from 'react'
 import {db} from '@/lib/db'
 import Link from 'next/link'
+import { prisma } from '@/lib/prisma'
+
 
 async function userPage() {
-    const data = await db.query("SELECT id,name FROM users") 
-    const res = data.rows
+    // const data = await db.query("SELECT id,name FROM users") 
+    // const res = data.rows
+
+    const res = await prisma.users.findMany()
+
   return (
     <>
         <div>userPage</div>

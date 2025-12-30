@@ -24,6 +24,7 @@ async function UserById({params} : {params: Promise<{id : String}>}) {
                 <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>email</th>
                 <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>city</th>
                 <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>pin</th>
+                <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>pin</th>
             </thead>
             <tbody>
                 {res?.map((user : users)=>(

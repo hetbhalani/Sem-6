@@ -1,19 +1,10 @@
 generator client {
   provider = "prisma-client"
+  output   = "../app/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model users {
-  id    Int     @id @default(autoincrement())
-  name  String  @db.VarChar(100)
-  email String  @unique @db.VarChar(150)
-  city  String? @db.VarChar(100)
-  pin   String? @db.Char(6)
-  todo  todo[]
 }
 
 model todo {
@@ -23,4 +14,13 @@ model todo {
   isDone      Boolean?
   task_id     Int      @id @default(autoincrement())
   users       users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+}
+
+model users {
+  id    Int     @id @default(autoincrement())
+  name  String  @db.VarChar(100)
+  email String  @unique @db.VarChar(150)
+  city  String? @db.VarChar(100)
+  pin   String? @db.Char(6)
+  todo  todo[]
 }

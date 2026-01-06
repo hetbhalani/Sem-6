@@ -9,8 +9,8 @@ datasource db {
 
 model todo {
   user_id     Int?
-  task        String?  @db.Char
-  description String?  @db.Char
+  task        String?  @db.VarChar(255)
+  description String?  @db.VarChar(500)
   isDone      Boolean?
   task_id     Int      @id @default(autoincrement())
   users       users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")

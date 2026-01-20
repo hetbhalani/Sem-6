@@ -3,44 +3,43 @@ import Link from 'next/link'
 import { prisma } from '@/app/lib/prisma'
 import DeleteButton from '@/components/DeleteButton'
 
-
 async function userPage() {
-    // const data = await db.query("SELECT id,name FROM users") 
-    // const res = data.rows
-
     const res = await prisma.users.findMany()
 
-  return (
-    <>
-        <div>userPage</div>
-        <table className='w-full text-left table-auto min-w-max'>
-            <thead>
-                <tr>
-                    <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>id</th>
-                    <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>name</th>
-                    <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>info</th>
-                    <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>todo info</th>
-                    <th className='p-4 border-b border-blue-gray-100 bg-blue-gray-50'>Delete kro</th>
-                </tr>
-            </thead>
-            <tbody>
-                {res.map((user : any)=>(
-                    <tr key={user.id}>
-                        <td className='p-4 border-b border-blue-gray-50'>{user.id}</td>
-                        <td className='p-4 border-b border-blue-gray-50'>{user.name}</td>
-                        <td className='p-4 border-b border-blue-gray-50'>
-                            <Link href={`/users/${user.id}`}>More info</Link>
-                        </td>
-                        <td className='p-4 border-b border-blue-gray-50'>
-                            <Link href={`/todo/${user.id}`}>Todos info</Link>
-                        </td>
-                        <DeleteButton id={user.id} type={"user"}/>
+    return (
+        <div>
+            <h1 className="text-2xl font-bold mb-4">Users List</h1>
+
+            <table className="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2">ID</th>
+                        <th className="border border-gray-300 p-2">Name</th>
+                        <th className="border border-gray-300 p-2">Profile</th>
+                        <th className="border border-gray-300 p-2">Todos</th>
+                        <th className="border border-gray-300 p-2">Action</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
-    </>
-  )
+                </thead>
+                <tbody>
+                    {res.map((user: any) => (
+                        <tr key={user.id} className="text-center">
+                            <td className="border border-gray-300 p-2">{user.id}</td>
+                            <td className="border border-gray-300 p-2">{user.name}</td>
+                            <td className="border border-gray-300 p-2">
+                                <Link href={`/users/${user.id}`} className="text-blue-600 underline">View</Link>
+                            </td>
+                            <td className="border border-gray-300 p-2">
+                                <Link href={`/todo/${user.id}`} className="text-blue-600 underline">Todos</Link>
+                            </td>
+                            <td className="border border-gray-300 p-2">
+                                <DeleteButton id={user.id} type={"user"} />
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default userPage
